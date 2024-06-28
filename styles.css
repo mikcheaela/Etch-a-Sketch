@@ -1,0 +1,23 @@
+*{
+    margin:0px;
+    padding:0px;
+}
+
+#container{
+    padding:50px;
+    width: 90%;
+    height: 90%;
+}
+
+#container > div{
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square{
+    width: 45px;
+    height:100%;
+    border: 1px solid black;
+}
