@@ -1,4 +1,5 @@
-const container = document.querySelector("#container");
+const container = document.querySelector(".container");
+const reset = document.querySelector(".reset");
 
 function createGrid(){
 
@@ -13,5 +14,18 @@ function createGrid(){
 
 }
 
-
 createGrid();
+
+const squares = document.querySelectorAll(".square");
+
+squares.forEach((elem) => {
+    elem.addEventListener("mouseover", () => {
+        elem.style.backgroundColor = "black";
+    })
+})
+
+reset.addEventListener("click", () => {
+    squares.forEach((elem => {
+        elem.style.backgroundColor = "white";
+    }))
+})
