@@ -2,9 +2,11 @@ const container = document.querySelector(".container");
 const reset = document.querySelector(".reset");
 const grid = document.querySelector(".new-grid");
 const root = document.querySelector(":root");
-const containerWidth = 720;
+const colorPicker = document.querySelector("#picker");
+const containerWidth = 784;
 const containerHeight = 784; 
 let currentSize = 16;
+let currentColor = "black";
 
 console.log(containerWidth);
 
@@ -14,7 +16,7 @@ function colorSquare(){
     squares.forEach((elem) => {
         elem.addEventListener("mouseover", () => {
             const squares = document.querySelectorAll(".square");
-            elem.style.backgroundColor = "black";
+            elem.style.backgroundColor = currentColor;
         })
     })
 
@@ -61,13 +63,21 @@ function createGrid(bounds){
 createGrid(16);
 
 grid.addEventListener("click", () => {
-    let size = prompt("What dimension would you like your grid to be? (Less than 100)");
+    let size = prompt("Enter a dimension for your new grid (Up to 100).");
     currentSize = size;
     emptyGrid(currentSize);
 })
 
 reset.addEventListener("click", () => {
     emptyGrid(currentSize);
+})
+
+colorPicker.addEventListener("change", (event) => {
+    currentColor = event.target.value;
+})
+
+colorPicker.addEventListener("input", (event) => {
+    currentColor = event.target.value;
 })
 
 
