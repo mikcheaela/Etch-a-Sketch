@@ -1,3 +1,4 @@
+
 const container = document.querySelector(".container");
 const reset = document.querySelector(".reset");
 const grid = document.querySelector(".new-grid");
@@ -9,6 +10,10 @@ let currentSize = 16;
 let currentColor = "black";
 
 console.log(containerWidth);
+
+function autoClick(){
+    $("download").click();
+}
 
 function colorSquare(){
 
@@ -63,7 +68,7 @@ function createGrid(bounds){
 createGrid(16);
 
 grid.addEventListener("click", () => {
-    let size = prompt("Enter a dimension for your new grid (Up to 100).");
+    let size = +prompt("Enter a dimension for your new grid (Up to 100).");
     currentSize = size;
     emptyGrid(currentSize);
 })
@@ -80,5 +85,16 @@ colorPicker.addEventListener("input", (event) => {
     currentColor = event.target.value;
 })
 
-
+$(document).ready(function(){
+    const element = $(".container"); 
+    $(".download ").on("click",  () => {
+        html2canvas(element, {
+            onrendered: function(canvas){
+                const imageData = canvas.toDataURL("image/jpg");
+                const newData =  imageData.replace(/^data:imageData\/jpg/, "data:application/octet-stream");
+                $(".download").attr("download", "image.jpg").attr("href", newData); 
+            }
+        })
+    })
+})
 
