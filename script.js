@@ -6,6 +6,7 @@ const root = document.querySelector(":root");
 const colorPicker = document.querySelector("#picker");
 const containerWidth = 784;
 const containerHeight = 784; 
+let isMouseDown = true;
 let currentSize = 16;
 let currentColor = "black";
 
@@ -16,15 +17,15 @@ function autoClick(){
 }
 
 function colorSquare(){
-
-    const squares = document.querySelectorAll(".square");
-    squares.forEach((elem) => {
-        elem.addEventListener("mouseover", () => {
-            const squares = document.querySelectorAll(".square");
-            elem.style.backgroundColor = currentColor;
+    if (isMouseDown){
+        const squares = document.querySelectorAll(".square");
+        squares.forEach((elem) => {
+            elem.addEventListener("mouseover", () => {
+                const squares = document.querySelectorAll(".square");
+                elem.style.backgroundColor = currentColor;
+            })
         })
-    })
-
+    }
 }
 
 function emptyGrid(size){
